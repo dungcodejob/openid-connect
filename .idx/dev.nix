@@ -9,13 +9,13 @@
     # pkgs.go
     # pkgs.python311
     # pkgs.python311Packages.pip
-    # pkgs.nodejs_20
+    pkgs.nodejs_20
     # pkgs.nodePackages.nodemon
     pkgs.yarn
   ];
 
   # Sets environment variables in the workspace
-  env = {};
+  env = { };
   idx = {
     # Search for the extensions you want on https://open-vsx.org/ and use "publisher.id"
     extensions = [
@@ -36,6 +36,11 @@
         #     PORT = "$PORT";
         #   };
         # };
+
+        web = {
+          command = ["yarn" "--cwd" "./angular-oidc-ngrx" "run" "start" "--" "--port" "$PORT" "--host" "0.0.0.0" "--disable-host-check" ];
+          manager = "web";
+        };
       };
     };
 

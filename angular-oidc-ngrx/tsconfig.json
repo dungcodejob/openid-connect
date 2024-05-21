@@ -3,6 +3,18 @@
   "compileOnSave": false,
   "compilerOptions": {
     "outDir": "./dist/out-tsc",
+    "baseUrl": "./",
+    "paths": {
+      "@core/*": [
+        "src/app/core/*"
+      ],
+    "@store/*": [
+        "src/app/store/*"
+      ],
+      "@shared/*": [
+        "src/app/shared/*"
+      ],
+    },
     "strict": true,
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
