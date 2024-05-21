@@ -11,7 +11,7 @@ import { provideState, provideStore } from '@ngrx/store';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { UserEffects, UserFacade, userFeature } from '@store/user';
 import { provideOAuthClient } from 'angular-oauth2-oidc';
-import { filter, tap } from 'rxjs';
+import { filter, take } from 'rxjs';
 import { routes } from './app.routes';
 
 function initializeOAuth() {
@@ -19,9 +19,7 @@ function initializeOAuth() {
 
   return () => {
     userFacade.logIn();
-    return userFacade.logInRequestHandled$.pipe(
-      tap(value => console.log(value)),
-      filter(Boolean));
+    return userFacade.logInRequestHandled$.pipe(filter(Boolean), take(1));
   };
 }
 
